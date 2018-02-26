@@ -47,11 +47,7 @@
 
 %>
 
-<form action="landing.jsp">
-
-	<input type="submit" value="Go Back" />
-
-</form>
+<p><a href="landing.jsp">Go Back</a></p>
 
 <form action="/newblogpost" method="post">
 
@@ -62,6 +58,8 @@
 	<p>Write your blog post here:</p>
     
     <div><textarea name="content" rows="3" cols="60"></textarea></div>
+
+	<br>
 
     <div><input type="submit" value="Post Blog Entry" /></div>
 

@@ -31,9 +31,21 @@
 	
 </head>
 
+<%
+
+	String title = request.getParameter("title");
+
+	String content = request.getParameter("content");
+	
+	//String n = ObjectifyService.ofy().load().key().get();
+%>
+
+
 <body>
 
-	<p>This is where a blog might go.</p>
+	<p><% %></p>
+	
+	<p></p>
 
 </body>
 

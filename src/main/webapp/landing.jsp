@@ -118,22 +118,17 @@ to include your name with blogs you post.</p>
 		
 	}
 	
+}
 	
 %>
 
 <form action="newblogpost.jsp">
-
+	
     <div><input type="submit" value="Add New Blog Post" /></div>
-
+	
 	<input type="hidden" name="blogName" value="${fn:escapeXml(blogName)}"/>
 
 </form>
-
-<%
-
-	}
-
-%>
 
 </body>
 
