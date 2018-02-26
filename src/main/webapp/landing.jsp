@@ -34,6 +34,18 @@
 <body>
 
 <%
+	
+	String show_all_post = request.getParameter("show_all_post");
+	
+	Boolean flag;
+	
+	if (show_all_post == null) {
+		flag = false;
+	} else if (show_all_post.equals("false")) {
+		flag = false;
+	} else {
+		flag = true;
+	}
 
 	String blogName = request.getParameter("blogName");
 		
@@ -83,7 +95,7 @@ to include your name with blogs you post.</p>
 
 	List<BlogPost> blogPosts = ObjectifyService.ofy().load().type(BlogPost.class).list();
 	
-	//Collections.sort(blogPosts);
+	Collections.sort(blogPosts, Collections.reverseOrder());
 
 	if (blogPosts.isEmpty()) {
 		
@@ -103,32 +115,99 @@ to include your name with blogs you post.</p>
 		
 		pageContext.setAttribute("blogPost_user", blogPost.getUser());
 		
+		String content = blogPost.getContent();
+		
+		String preview;
+		
+		if (content.length() > 20) {
+			
+			preview = content.substring(0,20) + "..." ;
+			
+		} else {
+			
+			preview = content;
+		
+		}
+		
+		pageContext.setAttribute("blogPost_content", content);
+		
+		pageContext.setAttribute("blogPost_preview", preview);
+		
+		pageContext.setAttribute("blogPost_date", blogPost.getDate());
+		
 %>
 	
-<p><a href="readblogpost.jsp">${fn:escapeXml(blogPost_user.nickname)} : ${fn:escapeXml(blogPost_title)}</a></p>
+	<form action="readblogpost.jsp" method="post">
+			
+		<input type="hidden" name="title" value="${fn:escapeXml(blogPost_title)}"/>
+		
+		<input type="hidden" name="content" value="${fn:escapeXml(blogPost_content)}"/>
+		
+		Author: ${fn:escapeXml(blogPost_user.nickname)} <br>
+		Title: ${fn:escapeXml(blogPost_title)} <br>
+		Date: ${fn:escapeXml(blogPost_date)} <br>
+		Content: ${fn:escapeXml(blogPost_preview)}
+		
+		<div><input type="submit" value="Read Post" /></div>
+		
+	</form>
+	
+
 	
 <%
 		i++;
 
-		if (i == 5) {
+		if (i >= 5 && flag == false) {
 			
 			break;
-			
 		}
 		
 	}
 	
 }
-	
+		
 %>
 
-<form action="newblogpost.jsp">
+<% 
+	if(flag == false) { 	
+%>
+<form action="landing.jsp" method="post">
+
+	<div><input type="submit" value="Show All Posts" /></div>
+	
+	<input type="hidden" name="show_all_post" value="true"/>	
+
+</form>
+
+<% 
+	} else {
+%>
+
+<form action="landing.jsp" method="post">
+
+	<div><input type="submit" value="Show Fewer Posts" /></div>
+	
+	<input type="hidden" name="show_all_post" value="false"/>	
+
+</form>
+
+<% }
+
+if (user != null) {
+
+%>	
+	
+<form action="newblogpost.jsp" method="post">
 	
     <div><input type="submit" value="Add New Blog Post" /></div>
 	
 	<input type="hidden" name="blogName" value="${fn:escapeXml(blogName)}"/>
 
 </form>
+
+<%
+}
+%>
 
 </body>
 

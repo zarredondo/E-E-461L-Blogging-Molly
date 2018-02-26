@@ -1,6 +1,10 @@
 package bloggingmolly;
 
 import com.google.appengine.api.users.User;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import com.googlecode.objectify.Key;
 import com.googlecode.objectify.annotation.Entity;
@@ -24,6 +28,7 @@ public class BlogPost implements Comparable<BlogPost> {
 		this.title = title;
 		this.content = content;
 		this.blogName = Key.create(Blog.class, blogName);
+		this.date = Calendar.getInstance().getTime();
 	}
 	
 	public User getUser() {
@@ -36,6 +41,12 @@ public class BlogPost implements Comparable<BlogPost> {
 	
 	public String getContent() {
 		return content;
+	}
+	
+	public String getDate() {
+		DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
+		String datePosted = dateFormat.format(date);
+		return datePosted;
 	}
 
 	@Override

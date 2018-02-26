@@ -37,16 +37,18 @@
 
 	String content = request.getParameter("content");
 	
-	//String n = ObjectifyService.ofy().load().key().get();
+	pageContext.setAttribute("title", title);
+	
+	pageContext.setAttribute("content", content);
+	
 %>
 
 
 <body>
-
-	<p><% %></p>
-	
-	<p></p>
-
+	<p><a href="landing.jsp">Go Back</a></p>
+	<h3>Title:</h3>
+	<p>${fn:escapeXml(title)}</p>
+	<p>${fn:escapeXml(content)}</p>
 </body>
 
 </html>
