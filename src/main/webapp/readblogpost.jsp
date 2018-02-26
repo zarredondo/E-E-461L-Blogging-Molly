@@ -27,47 +27,13 @@
 
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	
-	<title>New Blog Post</title>
+	<title>Blogging Molly</title>
 	
 </head>
 
 <body>
 
-<%
-
-	String blogName = request.getParameter("blogName");
-	
-	if (blogName == null) {
-		
-		blogName = "Blogging Molly";
-		
-	}
-
-	pageContext.setAttribute("blogName", blogName);
-
-%>
-
-<form action="landing.jsp">
-
-	<input type="submit" value="Go Back" />
-
-</form>
-
-<form action="/newblogpost" method="post">
-
-	<p>Write your blog title here:</p>
-	
-	<div><textarea name="title" rows="1" cols="30"></textarea></div>
-	
-	<p>Write your blog post here:</p>
-    
-    <div><textarea name="content" rows="3" cols="60"></textarea></div>
-
-    <div><input type="submit" value="Post Blog Entry" /></div>
-
-    <input type="hidden" name="blogName" value="${fn:escapeXml(blogName)}"/>
-    
-</form>
+	<p>This is where a blog might go.</p>
 
 </body>
 

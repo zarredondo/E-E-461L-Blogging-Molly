@@ -4,8 +4,38 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
   
+  	<servlet>
+   
+		<servlet-name>blog</servlet-name>
+	
+		<servlet-class>bloggingmolly.BlogServlet</servlet-class>
+	
+	</servlet>
   
-  
+	<servlet-mapping>
+	
+		<servlet-name>blog</servlet-name>
+	
+		<url-pattern>/blog</url-pattern>
+	
+	</servlet-mapping>
+        
+    <servlet>
+       
+       	<servlet-name>newblogpost</servlet-name>
+
+       	<servlet-class>bloggingmolly.NewBlogPostServlet</servlet-class>
+       	
+	</servlet>
+
+   	<servlet-mapping>
+
+       	<servlet-name>newblogpost</servlet-name>
+
+       	<url-pattern>/newblogpost</url-pattern>
+
+   	</servlet-mapping>
+        
 	<filter>
 
         <filter-name>ObjectifyFilter</filter-name>
@@ -27,4 +57,5 @@
     	<welcome-file>landing.jsp</welcome-file>
   	
   	</welcome-file-list>
+  	
 </web-app>

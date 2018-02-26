@@ -21,18 +21,28 @@ import javax.servlet.http.HttpServletResponse;
 public class NewBlogPostServlet extends HttpServlet {
 	
 	static {
+		
 		ObjectifyService.register(BlogPost.class);
+		
 	}
 	
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		
 		UserService userService = UserServiceFactory.getUserService();
+		
 		User user = userService.getCurrentUser();
 		
 		String blogName = req.getParameter("blogName");
+		
 		String title = req.getParameter("title");
+		
 		String content = req.getParameter("content");
+		
 		BlogPost blogPost = new BlogPost(user, title, content, blogName);
+		
 		ofy().save().entity(blogPost).now();
-		resp.sendRedirect("/newblogpost.jsp?blogName=" + blogName);
+		
+		resp.sendRedirect("/landing.jsp?blogName=" + blogName);
+		
 	}
 }

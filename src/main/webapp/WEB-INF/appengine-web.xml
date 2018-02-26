@@ -4,5 +4,5 @@
   <threadsafe>true</threadsafe>
   <sessions-enabled>false</sessions-enabled>
   <runtime>java8</runtime>
-
+  <application>bloggingmolly-196222</application>
 </appengine-web-app>
