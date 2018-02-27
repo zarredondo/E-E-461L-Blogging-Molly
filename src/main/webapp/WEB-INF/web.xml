@@ -4,7 +4,38 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
   
-          
+    <servlet>
+		
+		<servlet-name>SubscribeServlet</servlet-name>
+		
+		<servlet-class>bloggingmolly.SubscribeServlet</servlet-class>
+	
+	</servlet>
+	
+	<servlet-mapping>
+	
+		<servlet-name>SubscribeServlet</servlet-name>
+	
+		<url-pattern>/subscribe</url-pattern>
+	
+	</servlet-mapping>
+    
+    <servlet>
+		
+		<servlet-name>CronServlet</servlet-name>
+		
+		<servlet-class>bloggingmolly.CronServlet</servlet-class>
+	
+	</servlet>
+	
+	<servlet-mapping>
+	
+		<servlet-name>CronServlet</servlet-name>
+	
+		<url-pattern>/cron/mycronjob</url-pattern>
+	
+	</servlet-mapping>
+    
     <servlet>
        
        	<servlet-name>newblogpost</servlet-name>

@@ -209,6 +209,8 @@ if (user != null) {
 }
 %>
 
+<p><a href="subscribe.jsp">Subscribe to Our Mailing List</a></p>
+
 </body>
 
 </html>

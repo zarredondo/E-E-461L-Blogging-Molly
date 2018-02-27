@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cronentries>
+	<cron>
+		<url>/cron/mycronjob</url>
+		<description>
+			Sends an email to subscribers every day at 5 pm CST if there's at least one new blog post.
+		</description>
+		<schedule>every day 17:00</schedule>
+		<timezone>America/Chicago</timezone>
+	</cron>
+</cronentries>
